@@ -19,7 +19,13 @@ classifiers = [
 	"Topic :: Database",
 	"Topic :: Software Development :: Libraries",
 ]
-dependencies = ["axor-core>=0.6.0,<0.7"]
+dependencies = [
+    # Ceiling raised to <0.13. 0.12's breaking changes are STRICT-only and
+    # nothing here constructs a STRICT governor; measured against an installed
+    # 0.12.0 — 16 tests pass. The floor is unchanged: this bump widens what may
+    # resolve, it does not claim the versions between were re-measured.
+    "axor-core>=0.6.0,<0.13",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
